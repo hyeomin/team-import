@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Webpage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+
+    * {
+        font-family: 'Noto Serif KR', serif;
+    }
+
+    .mytitle {
+        height: 250px;
+
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-image: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
+        background-position: center;
+        background-size: cover;
+    }
+
+    .mytitle >button {
+        color: white;
+        background-color: transparent;
+
+        border: 0.5px solid gray;
+        border-radius: 10px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .teamsection {
+        width: 300px;
+        margin: 30px auto 0px auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .teamcards {
+        width: 1200px;
+        margin: 50px auto 50px auto;
+    }
+
+    .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .mypostingbox {
+        width: 500px;
+        margin: 30px auto 0px auto;
+
+        border: 1px solid gray;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+</style>
+
+<body>
+    <div class="mytitle">
+        <h1>팀 이름</h1>
+        <p>팀 소개 문구</p>
+        <button id="addbtn">팀원 추가하기</button>
+    </div>
+    <div class="teamsection">
+        <h2>TEAM</h2>
+        <h3>팀원 소개</h3>
+    </div>
+    <div class="mypostingbox" id="postingbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="image" placeholder="앨범 이미지">
+            <label for="floatingInput">팀원 이름</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="title" placeholder="앨범 이미지">
+            <label for="floatingInput">팀원 사진</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="content" placeholder="앨범 이미지">
+            <label for="floatingInput">협업 스타일</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
+            <label for="floatingInput">자신의 장점</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
+            <label for="floatingInput">자신의 장점</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
+            <label for="floatingInput">블로그 주소</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
+            <label for="floatingInput">취미</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
+            <label for="floatingInput">MBTI</label>
+        </div>
+        <div class="mybtn">
+            <button id="postingbtn" type="button" class="btn btn-primary">기록하기</button>
+            <button type="button" class="btn btn-outline-primary">닫기</button>
+        </div>
+    </div>
+    <div class="teamcards">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <div class="col" id="haerin">
+                <div class="card h-100">
+                    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMThfMjMx/MDAxNjc0MDExNzQzOTQ2.nVYrAyDG_5rzn-HwKiryIgntPdQoMbjfGfcUEAP5CeIg.LJH5ff7wpD4am2R5Keu2CRyKvhSivul5PYu3vhfo1JAg.JPEG.optk123/1111.jpg?type=w800"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="minji">
+                <div class="card h-100">
+                    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMjJfMTk2/MDAxNjc0MzU0MTM5MzUz.GTcIVOiIxTzjITP7pkBKtb87lEav7MmNK-PT_8RQPYUg.4nBjKnSuV1_8_Q5UrNkatYiBvoUX4mHX5JNCNc-Ktigg.JPEG.ab2673/1674354061099.jpg?type=w800"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a short card.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="danielle">
+                <div class="card h-100">
+                    <img src="https://pbs.twimg.com/media/FkVJC_baAAAjv1W?format=jpg&name=large" class="card-img-top"
+                        alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="haein">
+                <div class="card h-100">
+                    <img src="https://x86.co.kr/files/attach/images/187/852/640/007/b863e497843db759086837b3b75c5dd6.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="hany">
+                <div class="card h-100">
+                    <img src="https://blog.kakaocdn.net/dn/HC7m0/btrT4R3x5VO/EsOR1hzqs0ZHlHtmtUaSVK/img.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
