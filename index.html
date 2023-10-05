@@ -72,15 +72,17 @@
 
 </style>
 
+<script>
+    function openclose () {
+        $('#postingbox').toggle()
+    }
+</script>
+
 <body>
     <div class="mytitle">
         <h1>팀 이름</h1>
         <p>팀 소개 문구</p>
-        <button id="addbtn">팀원 추가하기</button>
-    </div>
-    <div class="teamsection">
-        <h2>TEAM</h2>
-        <h3>팀원 소개</h3>
+        <button onclick="openclose()">팀원 추가하기</button>
     </div>
     <div class="mypostingbox" id="postingbox">
         <div class="form-floating mb-3">
@@ -119,6 +121,10 @@
             <button id="postingbtn" type="button" class="btn btn-primary">기록하기</button>
             <button type="button" class="btn btn-outline-primary">닫기</button>
         </div>
+    </div>
+    <div class="teamsection">
+        <h2>TEAM</h2>
+        <h3>팀원 소개</h3>
     </div>
     <div class="teamcards">
         <div class="row row-cols-1 row-cols-md-4 g-4">
