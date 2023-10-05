@@ -32,13 +32,22 @@
         background-size: cover;
     }
 
-    .mytitle >button {
+    .mytitle>button {
         color: white;
         background-color: transparent;
 
         border: 0.5px solid gray;
         border-radius: 10px;
         padding: 5px 10px 5px 10px;
+    }
+
+    .mypostingbox {
+        width: 500px;
+        margin: 30px auto 0px auto;
+
+        border: 1px solid gray;
+        padding: 20px;
+        border-radius: 5px;
     }
 
     .teamsection {
@@ -61,19 +70,30 @@
         object-fit: cover;
     }
 
-    .mypostingbox {
-        width: 500px;
+    .aboutsection {
+        width: 300px;
         margin: 30px auto 0px auto;
 
-        border: 1px solid gray;
-        padding: 20px;
-        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .aboutcards {
+        width: 1200px;
+        margin: 50px auto 50px auto;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
 </style>
 
 <script>
-    function openclose () {
+    function openclose() {
         $('#postingbox').toggle()
     }
 </script>
@@ -162,8 +182,8 @@
             </div>
             <div class="col" id="haein">
                 <div class="card h-100">
-                    <img src="https://image.blip.kr/v1/file/7e4ad5093e6be5cff987056d9b3faf86"
-                        class="card-img-top" alt="...">
+                    <img src="https://image.blip.kr/v1/file/7e4ad5093e6be5cff987056d9b3faf86" class="card-img-top"
+                        alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
@@ -184,7 +204,45 @@
             </div>
         </div>
     </div>
-
+    <div class="aboutsection">
+        <h2>ABOUT</h2>
+        <h3>팀 소개</h3>
+    </div>
+    <div class="aboutcards">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">팀 특징</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Character</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">자세히 보러가기</a>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">팀 목표</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Goal</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">자세히 보러가기</a>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">팀 약속</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Promise</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">자세히 보러가기</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 
 </html>
