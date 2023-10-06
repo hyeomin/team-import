@@ -1,248 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Import Webpage</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+    />
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Import Webpage</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+        * {
+            font-family: "Pretendard", sans-serif;
+        }
+        p {
+            word-break: keep-all;
+        }
 
-    * {
-        font-family: 'Noto Serif KR', serif;
-    }
+        header a {
+            color: #111;
+            font-weight: 500;
+        }
+        header .nav-pills .nav-link.active {
+            color: #fff;
+        }
+        header .nav-pills .nav-link.active {
+            background-color: #111;
+        }
 
-    .mytitle {
-        height: 300px;
+        header .nav-link {
+            color: #111;
+        }
 
-        color: white;
+        .mytitle {
+            height: 440px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+            /* background-image: url(https://mblogthumb-phinf.pstatic.net/MjAyMjEyMjBfMTMy/MDAxNjcxNDkzMTA0OTcz.-fTC6tHtuhcn4XPVDWKUwXEDxoUiCZvxF2FT5ww9s7Qg.4J1g53rJNqz-ZkmLrKWXlY0k6r96054NmI279236thgg.JPEG.yusi2004/nj_ditto_13.jpg?type=w800);
+            background-position: center 20%;
+            background-size: cover; */
+        }
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .mytitle h1 {
+            /* margin-top: 40px; */
+            font-size: 72px;
+            font-weight: 500;
+            line-height: 150%;
+            letter-spacing: -1.6px;
+        }
 
-        background-image: url(https://mblogthumb-phinf.pstatic.net/MjAyMjEyMjBfMTMy/MDAxNjcxNDkzMTA0OTcz.-fTC6tHtuhcn4XPVDWKUwXEDxoUiCZvxF2FT5ww9s7Qg.4J1g53rJNqz-ZkmLrKWXlY0k6r96054NmI279236thgg.JPEG.yusi2004/nj_ditto_13.jpg?type=w800);
-        background-position: center 20%;
-        background-size: cover;
-    }
+        .mytitle p {
+            text-align: center;
+            margin-bottom: 32px;
+        }
 
-    .mytitle>button {
-        color: white;
-        background-color: transparent;
+        .mytitle > button {
+            width: 160px;
+            height: 40px;
+            color: white;
+            background-color: transparent;
+            border: 0.5px solid white;
+            border-radius: 5px;
+        }
 
-        border: 0.5px solid gray;
-        border-radius: 10px;
-        padding: 5px 10px 5px 10px;
-    }
+        .postingsection {
+            /* width: 300px; */
+            margin: 30px auto 0px auto;
 
-    .mypostingbox {
-        width: 500px;
-        margin: 30px auto 0px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-        border: 1px solid gray;
-        padding: 20px;
-        border-radius: 5px;
-    }
+        .mypostingbox {
+            width: 500px;
+            margin: 30px auto 0px auto;
+            border: 1px solid #aaa;
+            padding: 40px 24px;
+            border-radius: 5px;
+        }
 
-    .teamsection {
-        width: 300px;
-        margin: 30px auto 0px auto;
+        .form-floating > .form-control:focus::placeholder {
+            color: #bbb;
+        }
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .section {
+            margin: 100px auto 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .section h2 {
+            font-weight: 700;
+        }
 
-    .teamcards {
-        width: 1200px;
-        margin: 50px auto 50px auto;
-    }
+        .teamcards {
+            width: 1040px;
+            margin: 50px auto 50px auto;
+        }
 
-    .card-img-top {
-        height: 300px;
-        object-fit: cover;
-    }
+        .teamcards .col {
+            border-radius: 5px;
+        }
 
-    .aboutsection {
-        width: 300px;
-        margin: 30px auto 0px auto;
+        .card-img-top {
+            /* height: 300px; */
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 24px;
+        }
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .card-title {
+            margin-bottom: 4px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+        .card-title .sub-txt {
+            font-size: 18px;
+            font-weight: normal;
+            color: #555;
+        }
+        .card-sub-title {
+            font-size: 14px;
+            color: #999;
+        }
 
-    .aboutcards {
-        width: 1200px;
-        margin: 50px auto 50px auto;
-        
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        .aboutsection {
+            width: 300px;
+            margin: 30px auto 0px auto;
 
-</style>
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-<script>
-    function openclose() {
-        $('#postingbox').toggle()
-    }
-</script>
+        .aboutcards {
+            width: 1200px;
+            margin: 50px auto 50px auto;
 
-<body>
-    <div class="mytitle">
-        <h1>팀 이름</h1>
-        <p>팀 소개 문구</p>
-        <button onclick="openclose()">팀원 추가하기</button>
-    </div>
-    <div class="mypostingbox" id="postingbox">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="image" placeholder="앨범 이미지">
-            <label for="floatingInput">팀원 이름</label>
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-small-txt {
+            width: 100%;
+            padding: 24px 24px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-body p {
+            height: 50px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+            white-space: normal;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .card-body .btn {
+            width: 100%;
+            height: 40px;
+        }
+        footer {
+            width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <script>
+        function openclose() {
+            $("#postingbox").toggle();
+        }
+    </script>
+
+    <body>
+        <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
+            <a
+                href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+            >
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">@import</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Intro</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Team</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+        </header>
+        <div class="mytitle">
+            <h1>@import</h1>
+            <p>Hello we are import<br />안녕하세요 저희는 000000000 import 팀입니다</p>
+            <button onclick="openclose()" type="button" class="btn btn-outline-dark">팀원 추가하기</button>
         </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="title" placeholder="앨범 이미지">
-            <label for="floatingInput">팀원 사진</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="content" placeholder="앨범 이미지">
-            <label for="floatingInput">협업 스타일</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
-            <label for="floatingInput">자신의 장점</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
-            <label for="floatingInput">자신의 장점</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
-            <label for="floatingInput">블로그 주소</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
-            <label for="floatingInput">취미</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="date" placeholder="앨범 이미지">
-            <label for="floatingInput">MBTI</label>
-        </div>
-        <div class="mybtn">
-            <button id="postingbtn" type="button" class="btn btn-primary">기록하기</button>
-            <button type="button" class="btn btn-outline-primary">닫기</button>
-        </div>
-    </div>
-    <div class="teamsection">
-        <h2>TEAM</h2>
-        <h3>팀원 소개</h3>
-    </div>
-    <div class="teamcards">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            <div class="col" id="haerin">
-                <div class="card h-100">
-                    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMThfMjMx/MDAxNjc0MDExNzQzOTQ2.nVYrAyDG_5rzn-HwKiryIgntPdQoMbjfGfcUEAP5CeIg.LJH5ff7wpD4am2R5Keu2CRyKvhSivul5PYu3vhfo1JAg.JPEG.optk123/1111.jpg?type=w800"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+        <div class="container">
+            <div class="postingsection section">
+                <h2>팀원 추가하기</h2>
+            </div>
+            <div class="mypostingbox" id="postingbox">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요" />
+                    <label for="floatingInput">팀원 이름</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="url" class="form-control" id="image" placeholder="사진 주소를 입력해주세요" />
+                    <label for="floatingInput">팀원 사진</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="style"
+                        placeholder="자신의 협업 스타일을 입력해주세요"
+                    />
+                    <label for="floatingInput">협업 스타일</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="advantage" placeholder="자신의 장점을 입력해주세요" />
+                    <label for="floatingInput">자신의 장점</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="url" class="form-control" id="adress" placeholder="블로그 주소를 입력해주세요" />
+                    <label for="floatingInput">블로그 주소</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="date" placeholder="MBTI를 입력해주세요" />
+                    <label for="floatingInput">MBTI</label>
+                </div>
+                <div class="mybtn">
+                    <button type="button" class="btn btn-outline-primary">취소</button>
+                    <button id="postingbtn" type="button" class="btn btn-outline-dark">기록하기</button>
+                </div>
+            </div>
+            <div class="teamsection section">
+                <h2>TEAM</h2>
+                <h3>import 팀원들을 소개합니다</h3>
+            </div>
+            <div class="teamcards">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" id="haerin">
+                        <div class="card h-100">
+                            <div class="card-small-txt"><span>Team portrait</span><span class="mbti">INFJ</span></div>
+                            <img src="img/hyemin_400.jpg" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">박혜민 <span class="sub-txt">팀장</span></h5>
+                                <h6 class="card-sub-title">Hyemin Park</h6>
+                                <p class="card-text">
+                                    경영학을 전공하고 스타트업에서 사업개발 담당으로 일하면서 순도 100% 문과로 살다
+                                    개발자들의 매일 업무가 성향과 잘 맞을 것 같다는 생각으로 직무 전환을 결심하게
+                                    되었습니다.
+                                </p>
+                                <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" id="minji">
+                        <div class="card h-100">
+                            <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ENFP</span></div>
+                            <img
+                                src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMjJfMTk2/MDAxNjc0MzU0MTM5MzUz.GTcIVOiIxTzjITP7pkBKtb87lEav7MmNK-PT_8RQPYUg.4nBjKnSuV1_8_Q5UrNkatYiBvoUX4mHX5JNCNc-Ktigg.JPEG.ab2673/1674354061099.jpg?type=w800"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">박서아 <span class="sub-txt">팀원</span></h5>
+                                <h6 class="card-sub-title">Seoa Park</h6>
+                                <p class="card-text">-</p>
+                                <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" id="danielle">
+                        <div class="card h-100">
+                            <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ESFP</span></div>
+                            <img src="img/seonghyun_400.jpg" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">윤성현 <span class="sub-txt">팀원</span></h5>
+                                <h6 class="card-sub-title">Seonghyun Yoon</h6>
+                                <p class="card-text">
+                                    안녕하세요 &colon; &rpar; 사회복지학을 전공했지만 고등학교시절 이과생으로써 공부했던
+                                    재미를 잊지 못하고 어떤 일을 해보고 싶나 고민하던 중 개발자를 선택하게 되었고 애매한
+                                    커리어(?)로 갑작스러운 앱개발자 직무와 취미로 하던 영상편집까지 직무로 함께 활용하던
+                                    중에 애매한 커리어를 계속 쌓아가지 않기 위해 공부를 시작하게 됐습니다 ㅎㅎ 잘
+                                    부탁드립니다 &colon; &rpar;
+                                </p>
+                                <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" id="haein">
+                        <div class="card h-100">
+                            <div class="card-small-txt"><span>Team portrait</span><span class="mbti">INFP</span></div>
+                            <img src="img/jiyeon_400.jpg" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">한지연 <span class="sub-txt">팀원</span></h5>
+                                <h6 class="card-sub-title">Jiyeon Han</h6>
+                                <p class="card-text">
+                                    안녕하세요! 웹 퍼블리셔 일하다가 프론트엔드 개발자가 되고 싶어서 이 과정에 참여하게
+                                    되었습니다! 다들 잘 부탁드려요🥰
+                                </p>
+                                <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" id="hany">
+                        <div class="card h-100">
+                            <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ESTJ</span></div>
+                            <img src="img/heewon_400.jpg" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title">이희원 <span class="sub-txt">팀원</span></h5>
+                                <h6 class="card-sub-title">Heewon Lee</h6>
+                                <p class="card-text">
+                                    안녕하세요 ! 프론트엔드 개발자가 되고싶은 이희원 입니다 &colon; &rpar;
+                                </p>
+                                <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col" id="minji">
-                <div class="card h-100">
-                    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMjJfMTk2/MDAxNjc0MzU0MTM5MzUz.GTcIVOiIxTzjITP7pkBKtb87lEav7MmNK-PT_8RQPYUg.4nBjKnSuV1_8_Q5UrNkatYiBvoUX4mHX5JNCNc-Ktigg.JPEG.ab2673/1674354061099.jpg?type=w800"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a short card.</p>
+            <div class="aboutsection section">
+                <h2>ABOUT</h2>
+                <h3>팀 소개</h3>
+            </div>
+            <div class="aboutcards">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem">
+                            <div class="card-body">
+                                <h5 class="card-title">팀 특징</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Our Character</h6>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <a href="#" class="card-link">자세히 보러가기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem">
+                            <div class="card-body">
+                                <h5 class="card-title">팀 목표</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Our Goal</h6>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <a href="#" class="card-link">자세히 보러가기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem">
+                            <div class="card-body">
+                                <h5 class="card-title">팀 약속</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Our Promise</h6>
+                                <p class="card-text">
+                                    Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.
+                                </p>
+                                <a href="#" class="card-link">자세히 보러가기</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col" id="danielle">
-                <div class="card h-100">
-                    <img src="https://pbs.twimg.com/media/FkVJC_baAAAjv1W?format=jpg&name=large" class="card-img-top"
-                        alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" id="haein">
-                <div class="card h-100">
-                    <img src="https://image.blip.kr/v1/file/7e4ad5093e6be5cff987056d9b3faf86" class="card-img-top"
-                        alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col" id="hany">
-                <div class="card h-100">
-                    <img src="https://blog.kakaocdn.net/dn/HC7m0/btrT4R3x5VO/EsOR1hzqs0ZHlHtmtUaSVK/img.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Team Import. All Right Reserved.</span>
+                <span class="mb-3 mb-md-0 text-body-secondary">Made by Import Team</span>
+            </footer>
         </div>
-    </div>
-    <div class="aboutsection">
-        <h2>ABOUT</h2>
-        <h3>팀 소개</h3>
-    </div>
-    <div class="aboutcards">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 특징</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Character</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">자세히 보러가기</a>
-                      </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 목표</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Goal</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">자세히 보러가기</a>
-                      </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 약속</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Promise</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">자세히 보러가기</a>
-                      </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</body>
-
+    </body>
 </html>
