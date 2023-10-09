@@ -270,6 +270,40 @@
         font-weight: bold;
         color: #a719f7;
     }
+
+    #cheerUp {
+        text-align: center;
+    }
+    .wrapping {
+        margin: auto;
+    }
+
+    #comments {
+        margin-left: 300px;
+        width: 700px;
+        height: 55px;
+    }
+
+
+    #commentbtn {
+        margin: auto;
+        width: 100px;
+        height: 50px;
+    }
+
+    #reply {
+        width: auto;
+        height: 55px;
+    }
+
+    .wrapReply {
+        overflow: scroll;
+        margin-left: auto;
+        width: 700px;
+        height: 400px;
+    }
+
+
 </style>
 
 <script>
@@ -380,13 +414,14 @@
             <h2 id="cheerUp">IMPORT를 응원해주세요!</h2>
             <input id="comments" type="text" placeholder="TEAM IMPORT에게 한 마디!" />
             <button id="commentbtn" type="button" class="btn btn-outline-dark">ENTER</button>
+            <div class="wrapReply">
+                <div id="reply">
+                    <h3></h3>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="wrapReply">
-        <div id="reply">
-            <h3></h3>
-        </div>
-    </div>
+
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="addresses">
             <ul class="github-blog">
