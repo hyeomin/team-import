@@ -274,14 +274,18 @@
 
     #cheerUp {
         text-align: center;
+        margin-bottom: 10px;
     }
 
     .wrapping {
         margin: auto;
     }
-
+    #comment-outline{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     #comments {
-        margin-left: 300px;
         width: 700px;
         height: 55px;
     }
@@ -290,8 +294,36 @@
     #commentbtn {
         margin: auto;
         width: 100px;
-        height: 50px;
+        height: 55px;
+        background-color: #333;
+        color: #fff;
     }
+    #commentbtn:hover{
+        background: linear-gradient(-45deg,
+                #ee7752,
+                #e73c7e,
+                #a719f7,
+                #23a6d5,
+                #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        border: none;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
 
     #reply {
         width: auto;
@@ -300,10 +332,28 @@
 
     .wrapReply {
         overflow: scroll;
+        overflow-x: hidden;
         margin-left: 300px;
-        width: 700px;
+        width: 70%;
         height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
     }
+    .wrapReply::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #bbb; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+    .wrapReply::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+
+.wrapReply::-webkit-scrollbar-track {
+    background:  #ddd;  /*스크롤바 뒷 배경 색상*/
+    border-radius: 8px;
+}
 </style>
 
 <script type="module">
@@ -374,14 +424,12 @@
         <button id="toggleDarkMode">
             <img src="./img/sun_5915194.png" id="darkModeImage" />
         </button>
-        <!-- weather widget -->
-        <div id="weatherApi"></div>
     </header>
     <div class="mytitle">
         <h1>@import</h1>
         <p>
             Hello we are import<br>
-            안녕하세요 저희는 import 팀입니다<br>
+            안녕하세요 저희는 000000000 import 팀입니다<br>
         </p>
     </div>
     <div class="bg-grey">
@@ -424,7 +472,7 @@
                         <div class="card-small-txt">
                             <span>Team portrait</span><span class="mbti">ENFP</span>
                         </div>
-                        <img src="img/seoa_400.jpg"
+                        <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMjJfMTk2/MDAxNjc0MzU0MTM5MzUz.GTcIVOiIxTzjITP7pkBKtb87lEav7MmNK-PT_8RQPYUg.4nBjKnSuV1_8_Q5UrNkatYiBvoUX4mHX5JNCNc-Ktigg.JPEG.ab2673/1674354061099.jpg?type=w800"
                             class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">
@@ -576,8 +624,10 @@
         <div class="wrapping">
             <div id="comment-outline">
                 <h2 id="cheerUp">IMPORT를 응원해주세요!</h2>
-                <input id="comments" type="text" placeholder="TEAM IMPORT에게 한 마디!" />
+                <div class="comment-line">
+                    <input id="comments" type="text" placeholder="TEAM IMPORT에게 한 마디!" />
                 <button id="commentbtn" type="button" class="btn btn-outline-dark">ENTER</button>
+                </div>
                 <div class="wrapReply">
                     <div id="reply">
                         <h6></h6>
@@ -651,7 +701,6 @@
                 <p class="mb-3 mb-md-0 text-body-secondary">Made by Import Team</p>
             </div>
         </footer>
-
 </body>
 
 </html>
