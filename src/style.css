@@ -63,7 +63,12 @@
 [data-theme="dark"] label{
     color: #111;
 }
-
+[data-theme="dark"] .card{
+  color: #666;
+}
+[data-theme="dark"] .teamcards{
+  background-color: #222;
+}
 /* toggle */
 #toggleDarkMode {
     background-color: #eee;
