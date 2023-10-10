@@ -75,6 +75,8 @@
     border-radius: 50px;
     display: flex;
     align-items: center;
+    margin-left: 5px;
+  
 }
 
 #toggleDarkMode > img {
