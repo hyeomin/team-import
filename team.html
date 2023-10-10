@@ -217,40 +217,43 @@
 
     })
 
-    let docs = await getDocs(collection(db, "editing"));
-    docs.forEach((doc) => {
-        let row = doc.data();
 
-        let name = row['name'];
-        let image = row['image'];
-        let style = row['style'];
-        let advantage = row['advantage'];
+let docs = await getDocs(collection(db, "editing"));
+docs.forEach((doc) => {
+    let row = doc.data();
 
-        let temp_html = `
-        <section class="teamcards" id="${doc.id}">
-        <div class="mycards">
-            <div id="card" class="row row-cols-1 row-cols-md-1 g-1">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="${image}"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${name}</h5>
-                            <h6 class="style-title">협업 스타일</h6>
-                            <p class="card-text">${style}</p>
-                        </div>
-                        <div class="card-footer">
-                        <h6 class="style-title-b">자신의 장점</h6>
-                            <small class="text-body-secondary">${advantage}</small>
-                        </div>
+    let name = row['name'];
+    let image = row['image'];
+    let style = row['style'];
+    let advantage = row['advantage'];
+
+    let temp_html = `
+    <section class="teamcards" id="${doc.id}">
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-1 g-1">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${image}"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${name}</h5>
+                        <h6 class="style-title">협업 스타일</h6>
+                        <p class="card-text">${style}</p>
+                    </div>
+                    <div class="card-footer">
+                    <h6 class="style-title-b">자신의 장점</h6>
+                        <small class="text-body-secondary">${advantage}</small>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-           `;
-        $('#card').append(temp_html);
-    });
+    </div>
+</section>
+       `;
+    $('#mycard').append(temp_html); 
+});
+
+
 
 
 
