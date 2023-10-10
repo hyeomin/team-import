@@ -67,6 +67,9 @@
 [data-theme="dark"] label{
     color: #111;
 }
+[dark-theme="dark"] .card-text{
+color: black;
+}
 
 
 /* toggle */
@@ -91,23 +94,6 @@
   margin: 0 auto;
 }
 
-
-
-/* d-day 위젯 css */
-.d-day{
-    width: 85px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding: 6px;
-}
-.day-count{
-    font-size: 0.85rem;
-    text-align: center;
-    margin: 0 auto;
-    font-weight: 500;
-
-}
 
 /* footer */
 footer{
