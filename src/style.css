@@ -67,8 +67,8 @@
 [data-theme="dark"] label{
     color: #111;
 }
-[dark-theme="dark"] .card-text{
-color: black;
+[dark-theme="dark"] .card-body{
+color: #111;
 }
 
 
