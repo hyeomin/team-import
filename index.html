@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Import Webpage</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="src/toggle.js" defer></script>
+    <script src="src/topbutton.js" defer></script>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+<link rel="stylesheet" href="src/style.css" />
 <style>
     @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
@@ -23,6 +26,8 @@
 
     header {
         margin: 0 24px;
+        display: flex;
+        align-items: center;
     }
 
     header>a {
@@ -53,7 +58,12 @@
         /* background-image: url(https://mblogthumb-phinf.pstatic.net/MjAyMjEyMjBfMTMy/MDAxNjcxNDkzMTA0OTcz.-fTC6tHtuhcn4XPVDWKUwXEDxoUiCZvxF2FT5ww9s7Qg.4J1g53rJNqz-ZkmLrKWXlY0k6r96054NmI279236thgg.JPEG.yusi2004/nj_ditto_13.jpg?type=w800);
             background-position: center 20%;
             background-size: cover; */
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #a719f7, #23a6d5, #23d5ab);
+        background: linear-gradient(-45deg,
+                #ee7752,
+                #e73c7e,
+                #a719f7,
+                #23a6d5,
+                #23d5ab);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
     }
@@ -255,221 +265,381 @@
         width: 1200px;
         margin: 0 auto;
     }
+
+    #team {
+        font-size: 30px;
+        font-weight: bold;
+        color: #a719f7;
+    }
+
+    #cheerUp {
+        text-align: center;
+    }
+
+    .wrapping {
+        margin: auto;
+    }
+
+    #comments {
+        margin-left: 300px;
+        width: 700px;
+        height: 55px;
+    }
+
+
+    #commentbtn {
+        margin: auto;
+        width: 100px;
+        height: 50px;
+    }
+
+    #reply {
+        width: auto;
+        height: 55px;
+    }
+
+    .wrapReply {
+        overflow: scroll;
+        margin-left: 300px;
+        width: 700px;
+        height: 400px;
+    }
 </style>
 
-<script>
-    function openclose() {
-        $(".postingcontainer").slideToggle();
-    }
+<script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyAu5ZIv4A9H21PflBhEFOiVKqwk0zHAUos",
+        authDomain: "import-9d51c.firebaseapp.com",
+        projectId: "import-9d51c",
+        storageBucket: "import-9d51c.appspot.com",
+        messagingSenderId: "975445761737",
+        appId: "1:975445761737:web:89f46f81506497c19ab718",
+        measurementId: "G-HMHJ1593FD"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    $("#commentbtn").click(async function () {
+        let comments = $('#comments').val();
+        let doc2 = {
+            'comments': comments
+        };
+        await addDoc(collection(db, "comments"), doc2);
+        alert('응원 완료!');
+        window.location.reload();
+    })
+
+    let docs2 = await getDocs(collection(db, "comments"));
+    docs2.forEach((doc2) => {
+        let row = doc2.data();
+
+        let comments = row['comments'];
+
+        let temp_html2 = `
+        <div id="reply">
+            <h3>${comments}</h3>
+        </div>`;
+        $('#reply').append(temp_html2);
+    });
+
 </script>
 
-<body>
+<body data-theme="light">
     <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <span class="fs-4">@import</span>
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="https://hyeomin.github.io/team-import/index.html" class="nav-link active intro" aria-current="page">Intro</a></li>
-            <li class="nav-item"><a href="https://hyeomin.github.io/team-import/team.html" class="nav-link team">Team</a></li>
-            <!-- <li class="nav-item"><a href="#" class="nav-link about">About</a></li> -->
+            <li class="nav-item">
+                <a href="/" class="nav-link active intro" aria-current="page">Intro</a>
+            </li>
+            <li class="nav-item">
+                <a href="./team.html" class="nav-link team">Team</a>
+            </li>
         </ul>
+        <!-- darkmode toggle -->
+        <button id="toggleDarkMode">
+            <img src="./img/sun_5915194.png" id="darkModeImage" />
+        </button>
+        <!-- weather widget -->
+        <div id="weatherApi"></div>
     </header>
     <div class="mytitle">
         <h1>@import</h1>
-        <p>Hello we are import<br />안녕하세요 저희는 000000000 import 팀입니다</p>
-        <!-- <a href="https://hyeomin.github.io/team-import/team.html" class="btn btn-outline-dark" role="button">팀원 보러기</a> -->
-        <button onclick="window.location.href=https://hyeomin.github.io/team-import/team.html;" type="button" class="btn btn-outline-dark">팀원 보러기</button>
+        <p>
+            Hello we are import<br>
+            안녕하세요 저희는 000000000 import 팀입니다<br>
+        </p>
     </div>
     <div class="bg-grey">
         <div class="postingcontainer">
-            <!-- <div class="postingsection section">
-                    <h2>팀원 추가하기</h2>
-                </div>
-                <div class="mypostingbox" id="postingbox">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요" />
-                        <label for="floatingInput">팀원 이름</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="url" class="form-control" id="image" placeholder="사진 주소를 입력해주세요" />
-                        <label for="floatingInput">팀원 사진</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="style"
-                            placeholder="자신의 협업 스타일을 입력해주세요"
-                        />
-                        <label for="floatingInput">협업 스타일</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="advantage"
-                            placeholder="자신의 장점을 입력해주세요"
-                        />
-                        <label for="floatingInput">자신의 장점</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="url" class="form-control" id="adress" placeholder="블로그 주소를 입력해주세요" />
-                        <label for="floatingInput">블로그 주소</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="date" placeholder="MBTI를 입력해주세요" />
-                        <label for="floatingInput">MBTI</label>
-                    </div>
-                    <div class="mybtn">
-                        <button id="postingbtn" type="button" class="btn btn-dark">기록하기</button>
-                        <button id="deletebtn" type="button" class="btn btn-light">취소</button>
-                    </div>
-                </div> -->
         </div>
-        <div id="team" class="teamsection section">
-            <h2>TEAM</h2>
+        <div class="teamsection section">
+            <ul class="nav nav-pills">
+                <li id="team" class="nav-item">
+                    <a href="./team.html" class="nav-link team">TEAM</a>
+                </li>
+            </ul>
             <h3>import 팀원들을 소개합니다</h3>
         </div>
         <div class="teamcards">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col" id="haerin">
                     <div class="card h-100">
-                        <div class="card-small-txt"><span>Team portrait</span><span class="mbti">INFJ</span></div>
+                        <div class="card-small-txt">
+                            <span>Team portrait</span><span class="mbti">INFJ</span>
+                        </div>
                         <img src="img/hyemin_400.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <h5 class="card-title">박혜민 <span class="sub-txt">팀장</span></h5>
+                            <h5 class="card-title">
+                                박혜민 <span class="sub-txt">팀장</span>
+                            </h5>
                             <h6 class="card-sub-title">Hyemin Park</h6>
                             <p class="card-text">
-                                경영학을 전공하고 스타트업에서 사업개발 담당으로 일하면서 순도 100% 문과로 살다
-                                개발자들의 매일 업무가 성향과 잘 맞을 것 같다는 생각으로 직무 전환을 결심하게
-                                되었습니다.
+                                경영학을 전공하고 스타트업에서 사업개발 담당으로 일하면서 순도
+                                100% 문과로 살다 개발자들의 매일 업무가 성향과 잘 맞을 것
+                                같다는 생각으로 직무 전환을 결심하게 되었습니다.
                             </p>
-                            <button type="button" class="btn btn-outline-dark">자세히 보기 &#129412;</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                자세히 보기 &#129412;
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col" id="minji">
                     <div class="card h-100">
-                        <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ENFP</span></div>
+                        <div class="card-small-txt">
+                            <span>Team portrait</span><span class="mbti">ENFP</span>
+                        </div>
                         <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzAxMjJfMTk2/MDAxNjc0MzU0MTM5MzUz.GTcIVOiIxTzjITP7pkBKtb87lEav7MmNK-PT_8RQPYUg.4nBjKnSuV1_8_Q5UrNkatYiBvoUX4mHX5JNCNc-Ktigg.JPEG.ab2673/1674354061099.jpg?type=w800"
                             class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <h5 class="card-title">박서아 <span class="sub-txt">팀원</span></h5>
+                            <h5 class="card-title">
+                                박서아 <span class="sub-txt">팀원</span>
+                            </h5>
                             <h6 class="card-sub-title">Seoa Park</h6>
                             <p class="card-text">-</p>
-                            <button type="button" class="btn btn-outline-dark">자세히 보기 &#128048;</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                자세히 보기 &#128048;
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col" id="danielle">
                     <div class="card h-100">
-                        <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ESFP</span></div>
+                        <div class="card-small-txt">
+                            <span>Team portrait</span><span class="mbti">ESFP</span>
+                        </div>
                         <img src="img/seonghyun_400.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <h5 class="card-title">윤성현 <span class="sub-txt">팀원</span></h5>
+                            <h5 class="card-title">
+                                윤성현 <span class="sub-txt">팀원</span>
+                            </h5>
                             <h6 class="card-sub-title">Seonghyun Yoon</h6>
                             <p class="card-text">
-                                안녕하세요 &colon; &rpar; 사회복지학을 전공했지만 고등학교시절 이과생으로써 공부했던
-                                재미를 잊지 못하고 어떤 일을 해보고 싶나 고민하던 중 개발자를 선택하게 되었고 애매한
-                                커리어(?)로 갑작스러운 앱개발자 직무와 취미로 하던 영상편집까지 직무로 함께 활용하던
-                                중에 애매한 커리어를 계속 쌓아가지 않기 위해 공부를 시작하게 됐습니다 ㅎㅎ 잘
-                                부탁드립니다 &colon; &rpar;
+                                안녕하세요 &colon; &rpar; 사회복지학을 전공했지만 고등학교시절
+                                이과생으로써 공부했던 재미를 잊지 못하고 어떤 일을 해보고 싶나
+                                고민하던 중 개발자를 선택하게 되었고 애매한 커리어(?)로
+                                갑작스러운 앱개발자 직무와 취미로 하던 영상편집까지 직무로
+                                함께 활용하던 중에 애매한 커리어를 계속 쌓아가지 않기 위해
+                                공부를 시작하게 됐습니다 ㅎㅎ 잘 부탁드립니다 &colon; &rpar;
                             </p>
-                            <button type="button" class="btn btn-outline-dark">자세히 보기 &#129430;</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                자세히 보기 &#129430;
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col" id="haein">
                     <div class="card h-100">
-                        <div class="card-small-txt"><span>Team portrait</span><span class="mbti">INFP</span></div>
+                        <div class="card-small-txt">
+                            <span>Team portrait</span><span class="mbti">INFP</span>
+                        </div>
                         <img src="img/jiyeon_400.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <h5 class="card-title">한지연 <span class="sub-txt">팀원</span></h5>
+                            <h5 class="card-title">
+                                한지연 <span class="sub-txt">팀원</span>
+                            </h5>
                             <h6 class="card-sub-title">Jiyeon Han</h6>
                             <p class="card-text">
-                                안녕하세요! 웹 퍼블리셔 일하다가 프론트엔드 개발자가 되고 싶어서 이 과정에 참여하게
-                                되었습니다! 다들 잘 부탁드려요🥰
+                                안녕하세요! 웹 퍼블리셔 일하다가 프론트엔드 개발자가 되고
+                                싶어서 이 과정에 참여하게 되었습니다! 다들 잘 부탁드려요🥰
                             </p>
-                            <button type="button" class="btn btn-outline-dark">자세히 보기 &#128049;</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                자세히 보기 &#128049;
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col" id="hany">
                     <div class="card h-100">
-                        <div class="card-small-txt"><span>Team portrait</span><span class="mbti">ESTJ</span></div>
+                        <div class="card-small-txt">
+                            <span>Team portrait</span><span class="mbti">ESTJ</span>
+                        </div>
                         <img src="img/heewon_400.jpg" class="card-img-top" alt="..." />
                         <div class="card-body">
-                            <h5 class="card-title">이희원 <span class="sub-txt">팀원</span></h5>
+                            <h5 class="card-title">
+                                이희원 <span class="sub-txt">팀원</span>
+                            </h5>
                             <h6 class="card-sub-title">Heewon Lee</h6>
                             <p class="card-text">
-                                안녕하세요 ! 프론트엔드 개발자가 되고싶은 이희원 입니다 &colon; &rpar;
+                                안녕하세요 ! 프론트엔드 개발자가 되고싶은 이희원 입니다
+                                &colon; &rpar;
                             </p>
-                            <button type="button" class="btn btn-outline-dark">자세히 보기 &#128057;</button>
+                            <button type="button" class="btn btn-outline-dark">
+                                자세히 보기 &#128057;
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="aboutsection section">
+            <h2>ABOUT</h2>
+            <h3>import 팀 소개</h3>
+        </div>
+        <div class="aboutcards">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">팀 특징</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Our Character</h6>
+                            <p class="card-text">
+                                &#127827; 힘숨팀<br>
+                                &#127827; 아직 드러나진 않았지만 실력이 무궁무진한 팀<br>
+                                &#127827; 서로 잘 모르지만 으싸으싸 잘 하는 중<br>
+                                &#127827; 청일점<br>
+                                &#127827; 맡은 역할을 잘 수행하는 팀
+                            </p>
+                            <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">팀 목표</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Our Goal</h6>
+                            <p class="card-text" style="max-height: none;">
+                                &#129365; 사용자에게 필요한 서비스 만들기<br>
+                                &#129365; 열심히 공부해서 프론트엔드 개발자로 취뽀<br>
+                                &#129365; 원활한 협업을 통해 프로젝트 목표 달성<br>
+                                &#129365; 서로에게 이로운 영향을 주는 사람이 될 것
+                            </p>
+                            <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">팀 약속</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Our Promise</h6>
+                            <p class="card-text">
+                                13:00 ~ 14:00 점심 시간<br>
+                                18:00 ~ 19:00 저녁 시간<br>
+                                TIL 링크 23:59까지 팀 슬랙에 링크 공유<br>
+                                20시 30분 Git Merge
+                            </p>
+                            <button type="button" class="btn btn-outline-dark">자세히 보기</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="aboutsection section">
-        <h2>ABOUT</h2>
-        <h3>import 팀 소개</h3>
-    </div>
-    <div class="aboutcards">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 특징</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Character</h6>
-                        <p class="card-text">
-                            &#127827; 힘숨팀<br>
-                            &#127827; 아직 드러나진 않았지만 실력이 무궁무진한 팀<br>
-                            &#127827; 서로 잘 모르지만 으싸으싸 잘 하는 중<br>
-                            &#127827; 청일점<br>
-                            &#127827; 맡은 역할을 잘 수행하는 팀
-                        </p>
-                        <button type="button" class="btn btn-outline-dark">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 목표</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Goal</h6>
-                        <p class="card-text" style="max-height: none;">
-                            &#129365; 사용자에게 필요한 서비스 만들기<br>
-                            &#129365; 열심히 공부해서 프론트엔드 개발자로 취뽀<br>
-                            &#129365; 원활한 협업을 통해 프로젝트 목표 달성<br>
-                            &#129365; 서로에게 이로운 영향을 주는 사람이 될 것
-                        </p>
-                        <button type="button" class="btn btn-outline-dark">자세히 보기</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">팀 약속</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Our Promise</h6>
-                        <p class="card-text">
-                            13:00 ~ 14:00 점심 시간<br>
-                            18:00 ~ 19:00 저녁 시간<br>
-                            TIL 링크 23:59까지 팀 슬랙에 링크 공유<br>
-                            20시 30분 Git Merge
-                        </p>
-                        <button type="button" class="btn btn-outline-dark">자세히 보기</button>
+        <div class="wrapping">
+            <div id="comment-outline">
+                <h2 id="cheerUp">IMPORT를 응원해주세요!</h2>
+                <input id="comments" type="text" placeholder="TEAM IMPORT에게 한 마디!" />
+                <button id="commentbtn" type="button" class="btn btn-outline-dark">ENTER</button>
+                <div class="wrapReply">
+                    <div id="reply">
+                        <h3></h3>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Team Import. All Right Reserved.</span>
-        <span class="mb-3 mb-md-0 text-body-secondary">Made by Import Team</span>
-    </footer>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="addresses">
+                <ul class="github-blog">
+                    <h5># 박혜민님</h5>
+                    <li>
+                        <img src="img/github-light.png" id="darkModeIcon" alt="github-img" class="icon" />
+                        <a href="https://github.com/hyeomin">Github</a>
+                    </li>
+                    <li>
+                        <img src="img/티스토리 로고.svg" alt="blog-img" class="icon" />
+                        <a href="https://hyeomin-codex.tistory.com/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="github-blog">
+                    <h5># 박서아님</h5>
+                    <li>
+                        <img src="img/github-light.png" id="darkModeIcon" alt="github-img" class="icon" />
+                        <a href="https://github.com/strawberrysa">Github</a>
+                    </li>
+                    <li>
+                        <img src="img/티스토리 로고.svg" alt="blog-img" class="icon" />
+                        <a href="https://codefieldsforever.tistory.com/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="github-blog">
+                    <h5># 한지연님</h5>
+                    <li>
+                        <img src="img/github-light.png" id="darkModeIcon" alt="github-img" class="icon" />
+                        <a href="https://github.com/chocorogit">Github</a>
+                    </li>
+                    <li>
+                        <img src="img/티스토리 로고.svg" alt="blog-img" class="icon" />
+                        <a href="https://hanmochi.tistory.com/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="github-blog">
+                    <h5># 윤성현님</h5>
+                    <li>
+                        <img src="img/github-light.png" id="darkModeIcon" alt="github-img" class="icon" />
+                        <a href="https://github.com/Dello96">Github</a>
+                    </li>
+                    <li>
+                        <img src="img/green favicon.png" alt="blog-img" class="icon" />
+                        <a href="https://velog.io/@dello96">Blog</a>
+                    </li>
+                </ul>
+                <ul class="github-blog">
+                    <h5># 이희원님</h5>
+                    <li>
+                        <img src="img/github-light.png" id="darkModeIcon" alt="github-img" class="icon" />
+                        <a href="https://github.com/im2hw?tab=repositories">Github</a>
+                    </li>
+                    <li>
+                        <img src="img/green favicon.png" alt="blog-img" class="icon" />
+                        <a href="#">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="scrollTopBtn" title="맨 위로 이동">&#8679;</button>
+            <div class="copyright">
+                <p class="mb-3 mb-md-0 text-body-secondary">
+                    © 2023 Team Import. All Right Reserved.
+                </p>
+                <p class="mb-3 mb-md-0 text-body-secondary">Made by Import Team</p>
+            </div>
+        </footer>
+
 </body>
 
 </html>
