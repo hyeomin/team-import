@@ -60,6 +60,11 @@
         color: #666;
     }
 
+    .section > .btn-primary{
+        width: 100px;
+        border-radius: 0.25rem;
+    }
+
     .mytitle {
         height: 250px;
         color: white;
@@ -94,6 +99,15 @@
         width: 55%;
         margin: 100px auto 100px auto;
 
+    }
+
+    .card-title{
+        color: #333;
+    }
+
+    .card-text{
+        color: #666;
+        font-size: 15px;
     }
 
     .mypostingbox {
@@ -138,6 +152,10 @@
         border-top: 1px solid rgba(0, 0, 0, .125);
     }
 
+    .style-title{
+        color: #333;
+    }
+    
     #teamopen {
         display: none;
     }
@@ -204,9 +222,11 @@
                             class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${name}</h5>
+                            <h6 class="style-title>협업 스타일</h6>
                             <p class="card-text">${style}</p>
                         </div>
                         <div class="card-footer">
+                        <h6 class="style-title>자신의 장점</h6>
                             <small class="text-body-secondary">${advantage}</small>
                         </div>
                     </div>
