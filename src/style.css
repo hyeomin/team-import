@@ -40,6 +40,10 @@
       }
     }
 
+[data-theme="dark"] .teamcards{
+  background-color: #222;
+}
+
 /* 부트스트랩 요소만 dark 모드 전용  css */
 [data-theme="dark"] .nav-link{
     color: #fff;
