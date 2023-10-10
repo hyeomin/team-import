@@ -63,6 +63,7 @@
 [data-theme="dark"] label{
     color: #111;
 }
+
 /* toggle */
 #toggleDarkMode {
     background-color: #eee;
