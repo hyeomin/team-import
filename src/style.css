@@ -69,6 +69,10 @@
 [data-theme="dark"] .teamcards{
   background-color: #222;
 }
+[data-theme="dark"] #cancelbtn{
+  color: #fff;
+  border: 1px solid #fff;
+}
 /* toggle */
 #toggleDarkMode {
     background-color: #eee;
