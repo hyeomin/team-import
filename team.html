@@ -164,8 +164,9 @@
         font-weight: 500;
         font-size: 13px;
     }
-     .style-title-b{
-          color: #fff;
+
+    .style-title-b {
+        color: #fff;
         font-weight: 500;
         font-size: 13px;
     }
@@ -218,19 +219,19 @@
     })
 
 
-let docs = await getDocs(collection(db, "editing"));
-docs.forEach((doc) => {
-    let row = doc.data();
+    let docs = await getDocs(collection(db, "editing"));
+    docs.forEach((doc) => {
+        let row = doc.data();
 
-    let name = row['name'];
-    let image = row['image'];
-    let style = row['style'];
-    let advantage = row['advantage'];
+        let name = row['name'];
+        let image = row['image'];
+        let style = row['style'];
+        let advantage = row['advantage'];
 
-    let temp_html = `
+        let temp_html = `
     <section class="teamcards" id="${doc.id}">
-    <div class="mycards">
-        <div class="row row-cols-1 row-cols-md-1 g-1">
+        <div class="mycards teamsection">
+            <div id="card" class="row row-cols-1 row-cols-md-1 g-1">
             <div class="col">
                 <div class="card h-100">
                     <img src="${image}"
@@ -250,8 +251,8 @@ docs.forEach((doc) => {
     </div>
 </section>
        `;
-    $('#mycard').append(temp_html); 
-});
+        $('#card').append(temp_html);
+    });
 
 
 
