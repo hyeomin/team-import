@@ -73,6 +73,12 @@
   color: #fff;
   border: 1px solid #fff;
 }
+
+[dark-theme="dark"] .btn-outline-dark{
+  border: 1px solid white;
+  color: white;
+}
+
 /* toggle */
 #toggleDarkMode {
     background-color: #eee;
