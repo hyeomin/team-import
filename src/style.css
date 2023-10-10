@@ -63,7 +63,9 @@
 [data-theme="dark"] label{
     color: #111;
 }
-
+[data-theme="dark"] .card{
+  color: #666;
+}
 /* toggle */
 #toggleDarkMode {
     background-color: #eee;
